@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>el and data</title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+</head>
+<body>
+    <div id="root">
+        <h1>hello {{name}}</h1>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+//---------------------------------------------------------------------------
+    // const v = new Vue({
+    //     //el:"#root",
+    //     data:{
+    //         name:"shiqi"
+    //     }
+    // })
+    // console.log(v)
+    // setTimeout(()=>{
+    //     v.$mount('#root')
+    // },1000)
+//---------------------------------------------------------------------------
+    // new Vue({
+    //     el:"#root",
+    //     data:function(){
+    //         console.log("record======",this) //this为Vue的实例对象。对比下面的
+    //         return {
+    //             name:"shiqi"
+    //         }
+    //     }
+    // })
+//---------------------------------------------------------------------------
+    // new Vue({
+    //     el:"#root",
+    //     data:()=>{
+    //         console.log("record======",this) //呼应上面的，此时this是全局的,lambda表达式没有自己的this，所以往外找，就是全局的window
+    //         return {
+    //             name:"shiqi"
+    //         }
+    //     }
+    // })
+//---------------------------------------------------------------------------
+    //最优的data写法:可省略function
+    new Vue({
+        el:"#root",
+        data(){
+            console.log("record======",this)
+            return {
+                name:"shiqi"
+            }
+        }
+    })
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data binding</title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+</head>
+<body>
+    <div id="root">
+       one-way binding Input <input type="text" v-bind:value="name"><br>
+       two-way binding Input <input type="text" v-model:value="name"><br>
+        <hr>
+       one-way😊 binding Input <input type="text" :value="name"><br>
+       two-way😊 binding Input <input type="text" v-model="name"><br>
+
+       <!-- <h2 v-model:value="name">here is error
+           , cause the v-model only serve in input-type element</h2> -->
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+
+    new Vue({
+        el:"#root",
+        data:{
+            name:"shiqi"
+        }
+    })
+
+</script>
