@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Syntax</title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+</head>
+<body>
+    <div id="root">
+        <h1>Interpolations</h1>
+        <h3>hello {{name}}</h3>
+        <hr>
+        <h1>Directive syntax</h1>
+        <a v-bind:href="link.url.toUpperCase()">click to {{link.name.toUpperCase()}}</a>
+        <hr>
+        <a :href="link.url">click to {{link.name}}</a>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+        el:"#root",
+        data:{
+            name:"shiqi",
+            link:{
+                url:'http://youtube.com',
+                name:'youtube'
+            }
+        }
+    })
+
+</script>
