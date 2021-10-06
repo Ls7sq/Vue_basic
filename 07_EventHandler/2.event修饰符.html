@@ -16,7 +16,8 @@
         <a href="http://youtube.com" @click.prevent="showInfo">click me</a>
 
         <div class="demo1" @click="showInfo">
-            <button @click.stop="showInfo">click me</button>
+            <!-- <button @click.stop="showInfo">click me</button> -->
+            <a href="http://youtube.com" @click.prevent.stop="showInfo">click me</a>
         </div>
 
         <button @click.once="showInfo">click me2</button>
