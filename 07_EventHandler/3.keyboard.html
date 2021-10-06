@@ -13,7 +13,8 @@
     <div id="root">
         <h2>welcome to {{name}}</h2>
         <input type="text" placeholder="please click the enter" @keyup="showInfo">
-        <input type="text" placeholder="please click the enter" @keyup.enter="showInfo2">
+        <input type="text" placeholder="please click the enter" @keyup.ctrl.y="showInfo2">
+                                                                <!--must tap ctrl+y-->
     </div>
 </body>
 </html>
