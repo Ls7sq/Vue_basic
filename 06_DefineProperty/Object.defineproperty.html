@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object.defineProperty</title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+</head>
+<body>
+    <!-- View -->
+    <div id="root">
+
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    let number = 19
+    let person = {
+        name:"shiqi",
+        gender:"F"
+    }
+
+    Object.defineProperty(person, "age",{
+        get(){
+            return number;
+        },
+
+        set(value){
+            number=value
+        }
+    })
+
+    // for(let key in person){
+    //     console.log("@",person[key])
+    // }
+
+    console.log(Object.keys(person))
+    console.log(person)
+
+    // let person1 = {
+    //     name:"shiqi",
+    //     gender:"F",
+    //     age:18
+    // }
+
+    // for(let key in person1){
+    //     console.log("@",person1[key])
+    // }
+
+    // console.log(Object.keys(person1))
+    // console.log(person1)
+
+    // let person2 = {
+    //     name:"shiqi",
+    //     gender:"F",
+    // }
+    // Object.defineProperty(person2, "age", {
+    //     value:20,
+    //     enumerable:true,//控制属性是否可以被枚举，默认值是false
+    //     writable:true,//控制属性是否可以被修改，默认值是false
+    //     configurable:true//控制属性是否可以被删除，默认值是false
+    // })
+</script>
