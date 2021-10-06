@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.basic</title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+</head>
+<body>
+    <!-- View -->
+    <div id="root">
+        <h2>welcome to {{name}}</h2>
+        <button v-on:click="showInfo">click here</button>
+        <button @click="showInfo">click here1</button>
+        <button @click="showInfo2(66,$event)">click here2</button>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+    const vm = new Vue({
+        el:"#root",
+        data:{
+            name:"NUS",
+        },
+        methods:{
+            showInfo(event){
+                console.log(event.target.innerText),
+                console.log(this)//此处的this是vm
+                alert("OMG")
+            },
+            showInfo2(number,event){
+                alert("OMG!!!"+number)
+                console.log(event)
+            }
+        }
+    })
+</script>
