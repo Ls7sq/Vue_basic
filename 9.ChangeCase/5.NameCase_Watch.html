@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4.computed</title>
+    <title>Name Case watch</title>
     <!-- invoke vue -->
     <script type="text/javascript" src="../js/vue.js"></script> 
 </head>
@@ -24,11 +24,21 @@
         el:"#root",
         data:{
             firstName:"shiqi",
-            lastName:"luo"
+            lastName:"luo",
+            fullName:"shiqi-luo"
         },
-        computed:{
-            fullName(){
-                return this.firstName + '-' + this.lastName
+        watch:{
+            firstName:{
+                immediate:true,
+                handler(newValue){
+                    setTimeout(() => {
+                        this.fullName = newValue + "-" + this.lastName                        
+                    }, 1000);
+                    
+                }
+            },
+            lastName(newValue){
+                this.fullName = this.firstName + "-" + newValue
             }
         }
     })
