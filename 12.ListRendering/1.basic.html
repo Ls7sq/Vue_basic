@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+</head>
+<body>
+    <!-- View -->
+    <div id="root">
+        <ul>
+            <li v-for="person in persons" :key="person.id">
+                {{person.id}}-{{person.name}}
+            </li>
+        </ul><br>
+        <ul>
+            <li v-for="(p,index) in persons" :key="index">
+                {{p.id}}-{{p.name}}----{{index}}
+            </li>
+        </ul><br>
+        <ul>
+            <li v-for="(value,k) in cars" :key="k">
+                {{k}}: {{value}}
+            </li>
+        </ul>
+        
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+    const vm = new Vue({
+        el:"#root",
+        data:{
+            persons:[
+                {id:"001",name:"zhangsan",age:18},
+                {id:"002",name:"lisi",age:19},
+                {id:"003",name:"wangwu",age:20}
+            ],
+            cars:{
+                name:"Audi",
+                price:"30,000",
+                color:"black"
+            }
+        }
+    })
+</script>
+
