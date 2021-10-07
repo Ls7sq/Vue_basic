@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WheatherCase</title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+</head>
+<body>
+    <!-- View -->
+    <div id="root">
+        <h2>Today's wheather {{info}}</h2>
+        <button @click="changeWeather">change</button><hr>
+        <h3>a value is {{numbers.a}}</h3>
+        <button @click="numbers.a++">click me a++</button><hr>
+        <h3>b value is {{numbers.b}}</h3>
+        <button @click="numbers.b++">click me b++</button><hr>
+        <h3>c value is {{numbers.c}}</h3>
+        <button @click="numbers.c++">click me c++</button>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+    const vm = new Vue({
+        el:"#root",
+        data:{
+            isHot:true,
+            numbers:{
+                a:1,
+                b:1,
+                c:1
+            }
+        },
+        methods: {
+            changeWeather(){
+                this.isHot = !this.isHot
+            }
+        },
+        computed: {
+            info(){
+                return this.isHot?"Hot":"Cold"
+            }
+        },
+        watch:{
+            // isHot:{
+            //     immediate:true,
+            //     handler(newValue, oldValue){
+            //         console.log("changed happen",newValue,oldValue)
+            //     }
+            // },
+            // 'numbers.a':{
+            //     handler(newValue, oldValue){
+            //         console.log(newValue + " = " + oldValue + " + 1")
+            //     }
+            // }
+            numbers:{
+                deep:true,
+                handler(){
+                    console.log("number change")
+
+                }
+            }
+        }
+    })
+
+</script>
+
