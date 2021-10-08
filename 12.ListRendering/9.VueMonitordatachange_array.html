@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+</head>
+<body>
+    <!-- View -->
+    <div id="root">
+        <h2>name: {{school.name}}</h2>
+        <h2>address: {{school.address}}</h2>
+        <h2>leader: {{school.leader}}</h2>
+        <hr>
+        <h1>Student Info</h1>
+        <button @click="addSex">Add gender to student</button>
+        <button v-if="student.gender" @click="student.gender = 'F'">change gender to student</button>
+        <h2>student name: {{student.name}}</h2>
+        <h2>student age: {{student.age.fakeAge}}, real: {{student.age.realAge}}</h2>
+        <h2 v-if="student.gender">student gender: {{student.gender}}</h2>
+        <h2>Friends</h2>
+        <ul>
+            <li v-for="(f,index) in student.friends" :key="index">
+                {{f.name}}-{{f.age}}
+            </li>
+        </ul>
+        <h2>Hobby</h2>
+        <ul>
+            <li v-for="(h,index) in student.hobby" :key="index">
+                {{h}}
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+    //computed implement
+    const vm = new Vue({
+        el:"#root",
+        data:{
+            school:{
+                name:"shiqi",
+                address:"singapore",
+            },
+            student:{
+                name:"tom",
+                age:{
+                    realAge:40,
+                    fakeAge:18
+                },
+                hobby:
+                // {
+                //     h1:"chouyan",
+                //     h2:"hejiu",
+                //     h3:"tangtou"
+                // },
+                ['chouyan','hejiu','tangtou'],
+                friends:[
+                    {name:'jerry',age:35},
+                    {name:'henrry',age:20},
+                ]
+            }
+        },
+        methods: {
+            addSex(){
+                // Vue.set(this.student,"gender","M")
+                this.$set(this.student,"gender","M")
+            }
+        },
+    })
+</script>
+

@@ -38,7 +38,11 @@
             updateMei(){
                 // this.persons[0].name="dongdong"
                 // this.persons[0].age=50
-                this.persons[0] = {id:"001",name:"dongdong",age:50,gender:"f"}
+                
+                //doesn't work
+                //this.persons[0] = {id:"001",name:"dongdong",age:50,gender:"f"}
+
+                this.persons.splice(0,1,{id:"001",name:"dongdong",age:50,gender:"f"})
             }
         },
     })
