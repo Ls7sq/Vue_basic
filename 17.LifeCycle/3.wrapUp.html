@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+    <script type="text/javascript" src="../js/dayjs.min.js"></script>
+</head>
+<body>
+    <!-- View -->
+    <div id="root">
+        <h2 :style="{opacity}">Welcome to</h2>
+        <button @click="opacity=1">changed to 1</button>
+        <button @click="stop">click me to stop</button>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+    new Vue({
+        el:"#root",
+        data:{
+            opacity:0.1
+        },
+        methods: {
+            stop(){
+                this.$destroy()
+            }
+        },
+        //Vue完成模版的解析，并把初始的真实DOM放入页面后调用mounted
+        mounted(){
+            this.timer = setInterval(()=>{
+                console.log('setInterval')
+                this.opacity -= 0.01
+                if(this.opacity<=0){
+                    this.opacity = 1
+                }
+            },16)
+        },
+        beforeDestroy() {
+            clearInterval(this.timer)
+        },
+    })
+</script>
+
