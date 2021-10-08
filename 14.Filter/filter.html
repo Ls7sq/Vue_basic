@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+    <script type="text/javascript" src="../js/dayjs.min.js"></script>
+</head>
+<body>
+    <!-- View -->
+    <div id="root">
+        <h2>Present the formatting time</h2>
+        <!-- computed implement-->
+        <h3>Now is {{fmtTime}}</h3>
+
+        <!-- method implement-->
+        <h3>Now is {{getFmtTime()}}</h3>
+
+        <!-- filter implement-->
+        <h3>Now is {{time | timeFormater}}</h3>
+        
+        <!-- filter implement (para)-->
+        <h3>Now is {{time | timeFormater('YYYY-MM-DD') | mySlice }}</h3>
+        <h3 :x="msg | mySlice">Hello</h3>
+    </div>
+
+    <div id="root2">
+        <h2>{{message | mySlice}}</h2>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+    //global filter
+    Vue.filter('mySlice',function(val){
+        return val.slice(0,4)
+    })
+
+    //computed implement
+    const vm = new Vue({
+        el:"#root",
+        data:{
+            time:1633668548848,
+            msg:"hello world"
+        },
+        computed:{
+            fmtTime(){
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+            }
+        },
+        methods: {
+            getFmtTime(){
+                return dayjs(this.time).format('YYYY-MM-DD HH:mm:ss')
+            }
+        },
+        //local filter
+        filters:{
+            timeFormater(val, str='YYYY-MM-DD HH:mm:ss'){
+                return dayjs(val).format(str)
+            },
+            mySlice(val){
+                return val.slice(0,4)
+            }
+        }
+    })
+
+    new Vue({
+        el:"#root2",
+        data:{
+            message:"hello"
+        },
+    })
+</script>
+
