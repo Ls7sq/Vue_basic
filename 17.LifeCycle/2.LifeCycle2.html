@@ -49,7 +49,16 @@
             document.querySelector("h2").innerText="hahaha"
         },
         mounted() {
-            
+            console.log("mounted")
+        },
+        beforeUpdate() {
+            console.log("beforeUpdate")
+            console.log(this.n)
+            //debugger
+        },
+        updated() {
+            console.log("updated")
+            debugger  
         },
     })
 </script>
