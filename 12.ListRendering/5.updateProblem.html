@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+</head>
+<body>
+    <!-- View -->
+    <div id="root">
+        <ul>
+            <button @click="updateMei">update first info</button>
+            <li v-for="(p, index) in persons" :key="p.id">
+                {{p.id}}-{{p.name}}-{{p.age}}
+            </li>
+        </ul><br>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+    //computed implement
+    new Vue({
+        el:"#root",
+        data:{
+            persons:[
+                {id:"001",name:"madongmei",age:28,gender:"f"},
+                {id:"002",name:"zhoudongyu",age:19,gender:"f"},
+                {id:"003",name:"zhoujielun",age:30,gender:"m"},
+                {id:"004",name:"wenzhaolun",age:20,gender:"m"}
+            ]
+        },
+        methods: {
+            updateMei(){
+                // this.persons[0].name="dongdong"
+                // this.persons[0].age=50
+                this.persons[0] = {id:"001",name:"dongdong",age:50,gender:"f"}
+            }
+        },
+    })
+</script>
+
