@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+    <script type="text/javascript" src="../js/dayjs.min.js"></script>
+
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- View -->
+    <div id="root">
+        <h2>Current n value is: <span v-text="n"></span></h2>
+        <h2>10 times n value is: <span v-big="n"></span></h2>
+        <button @click="n++">click me n + 1</button>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+
+    //computed implement
+    const vm = new Vue({
+        el:"#root",
+        data:{
+            n:1
+        },
+        directives:{
+            //big函数何时会被调用。1.指令v-big与元素span成功绑定时. 2.指令所在模版被重新解析式。
+            big(element, binding){
+                // console.log(element)
+                // console.dir(element)
+                // console.log(element instanceof HTMLElement)
+                element.innerText = binding.value * 10
+            }
+        }
+    })
+</script>
+
