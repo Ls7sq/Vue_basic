@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+    <script type="text/javascript" src="../js/dayjs.min.js"></script>
+
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- View -->
+    <div id="root">
+        <h2 v-pre>Vue</h2>
+        <h2 v-pre>now n value is: {{n}}</h2>
+        <button @click="n++">click add n</button>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+
+    //computed implement
+    const vm = new Vue({
+        el:"#root",
+        data:{
+            n:1
+        }
+    })
+</script>
+
