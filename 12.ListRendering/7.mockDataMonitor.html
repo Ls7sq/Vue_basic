@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+</head>
+<body>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    let data = {
+        name:"shiqi",
+        address:"xx"
+    }
+
+    const obs = new Observer(data)
+    console.log(obs)
+
+    let vm = {}
+    vm._data = data = obs
+
+    function Observer(obj){
+        const keys = Object.keys(obj)
+        keys.forEach((k)=>{
+            Object.defineProperty(this,k,{
+                get(){
+                    return obj[k]
+                },
+                set(val){
+                    console.log(`${k} changed, doing............`)
+                    obj[k]=val
+                }
+            })
+        })
+    }
+</script>
+
