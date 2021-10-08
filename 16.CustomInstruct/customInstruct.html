@@ -21,6 +21,8 @@
         <h2>Current n value is: <span v-text="n"></span></h2>
         <h2>10 times n value is: <span v-big="n"></span></h2>
         <button @click="n++">click me n + 1</button>
+        <hr>
+        <input type="text" v-fbind:value="n">
     </div>
 </body>
 </html>
@@ -41,6 +43,20 @@
                 // console.dir(element)
                 // console.log(element instanceof HTMLElement)
                 element.innerText = binding.value * 10
+            },
+            fbind:{
+                //指令与元素成功绑定时（一上来）
+                bind(element,binding){
+                    element.value = binding.value
+                },
+                //指令所在元素被插入页面时
+                inserted(element, binding){
+                    element.focus()
+                },
+                //指令所在模版被重新解析时
+                update(element,binding){
+                    element.value = binding.value
+                }
             }
         }
     })
