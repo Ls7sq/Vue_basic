@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <!-- invoke vue -->
+    <script type="text/javascript" src="../js/vue.js"></script> 
+    <script type="text/javascript" src="../js/dayjs.min.js"></script>
+</head>
+<body>
+    <!-- View -->
+    <div id="root" :x="n">
+        <h2 v-bind:value="n">Current N value is {{n}}</h2>
+        <button @click="add">Click me n+1</button>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    Vue.config.productionTip=false
+    new Vue({
+        el:"#root",
+        data:{
+            n:1
+        },
+        methods: {
+            add(){
+                this.n++
+            }
+        },
+        beforeCreate() {
+            console.log('beforeCreate')
+            //console.log(this)
+            //debugger;
+        },
+        created() {
+            console.log("created")
+            //console.log(this)
+            //debugger
+            //奏效
+            //document.querySelector("h2").innerText="hahaha"
+        },
+        beforeMount() {
+            console.log("beforeMount")
+            //debugger
+            //不奏效
+            document.querySelector("h2").innerText="hahaha"
+        },
+        mounted() {
+            
+        },
+    })
+</script>
+

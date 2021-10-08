@@ -30,11 +30,11 @@
         //Vue完成模版的解析，并把初始的真实DOM放入页面后调用mounted
         mounted(){
             setInterval(()=>{
-                    this.opacity -= 0.01
-                    if(this.opacity<=0){
-                        this.opacity = 1
-                    }
-                },16)
+                this.opacity -= 0.01
+                if(this.opacity<=0){
+                    this.opacity = 1
+                }
+            },16)
         },
     })
 
