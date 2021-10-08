@@ -12,8 +12,10 @@
 <body>
     <!-- View -->
     <div id="root" :x="n">
+        <h2 v-text="n"></h2>
         <h2 v-bind:value="n">Current N value is {{n}}</h2>
         <button @click="add">Click me n+1</button>
+        <button @click="bye">click me to destroy</button>
     </div>
 </body>
 </html>
@@ -27,7 +29,17 @@
         },
         methods: {
             add(){
+                console.log("add")
                 this.n++
+            },
+            bye(){
+                console.log("bye")
+                this.$destroy()
+            }
+        },
+        watch: {
+            n(val){
+                console.log("n changed to ", val)
             }
         },
         beforeCreate() {
@@ -58,7 +70,14 @@
         },
         updated() {
             console.log("updated")
-            debugger  
+            //debugger  
+        },
+        beforeDestroy() {
+            console.log("beforeDestroy")
+            this.add()
+        },
+        destroyed() {
+            console.log("destroyed")
         },
     })
 </script>
