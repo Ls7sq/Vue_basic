@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- 准备好一个容器-->
+		<div id="root">
+			<h1>{{msg}}</h1>
+			<school></school>
+			<br>
+			<student></student>
+			<br>
+			<school><school/>
+		</div>
+
+
+	</body>
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+
+		//第一步：创建组件
+		const school = Vue.extend({
+			name:"myschool",
+			template:`
+			<div>
+				<h2>学校名称：{{name}}</h2>	
+				<h2>学校地址：{{address}}</h2>
+			</div>
+			`,
+			data() {
+				return {
+					name:"school",
+					address:"adress"
+				}
+			},
+			methods: {
+				
+			},
+		})
+
+		const student = {
+			name:"mystudent",
+			template:`
+			<div>
+				<h2>学生名称：{{name}}</h2>	
+				<h2>学生地址：{{address}}</h2>	
+			</div>
+			`,
+			data() {
+				return {
+					name:"student",
+					address:"adress"
+				}
+			},
+			methods: {
+				
+			},
+		}
+
+		new Vue({
+			el:"#root",
+			data:{
+				msg:"welcome"
+			},
+			components:{
+				school,
+				student
+			}
+		})
+
+	</script>
+</html>
