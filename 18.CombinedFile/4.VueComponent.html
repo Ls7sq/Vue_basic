@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title></title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- 准备好一个容器-->
+		<div id="root">
+           <school></school>
+           <hello></hello>
+		</div>
+
+
+	</body>
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+
+		//定义学校组件
+		const school = Vue.extend({
+			name:"myschool",
+			template:`
+			<div>
+				<h2>学校名称：{{name}}</h2>	
+				<h2>学校地址：{{address}}</h2>
+                <button @click="showName">Click me</button>
+			</div>
+			`,
+			data() {
+				return {
+					name:"school",
+					address:"adress"
+				}
+			},
+            methods: {
+                showName(){
+                    alert(this.name)
+                    console.info(this)
+                }
+            },
+		})
+
+        const test = Vue.extend({
+            template:`<span>{{msg}}</span>`,
+            data() {
+                return {
+                    msg:"checkcheck"
+                }
+            },
+        })
+
+        //定义hello组件
+		const hello = Vue.extend({
+			template:`
+				<div>
+					<h2>{{msg}}</h2>
+                    <test></test>
+				</div>
+			`,
+			data(){
+				return {
+					msg:'你好啊！'
+				}
+			},
+            components:{
+                test
+            }
+		})
+
+        //console.log(school)
+
+		const vm = new Vue({
+			el:"#root",
+            //注册组件（局部）
+			components:{
+				school,
+                hello
+			}
+		})
+
+	</script>
+</html>
